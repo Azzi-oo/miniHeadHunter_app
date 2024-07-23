@@ -3,10 +3,13 @@ import os
 import sys
 sys.path.insert(1, os.path.join(sys.path[0], '...'))
 
-from queries.core import create_tables, insert_data
-from queries.orm import create_tables, insert_data
+from queries.core import SyncCore
+from queries.orm import SyncORM
 
-create_tables()
-insert_data()
+SyncORM.create_tables()
+SyncORM.select_workers()
 
-asyncio.run(insert_data())
+SyncORM.insert_workers()
+
+SyncCore.select_workers()
+SyncCore.update_workers()
